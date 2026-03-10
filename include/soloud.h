@@ -190,6 +190,7 @@ namespace SoLoud
 			OPENAL,
 			COREAUDIO,
 			OPENSLES,
+            AAUDIO,
 			VITA_HOMEBREW,
 			MINIAUDIO,
 			NOSOUND,
