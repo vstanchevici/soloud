@@ -67,15 +67,8 @@ namespace SoLoud {
         AAudioStreamBuilder_setPerformanceMode(builder, AAUDIO_PERFORMANCE_MODE_LOW_LATENCY);
         AAudioStreamBuilder_setDataCallback(builder, soloud_aaudio_callback, aaudioData);
 
-        // Try Exclusive first
-        AAudioStreamBuilder_setSharingMode(builder, AAUDIO_SHARING_MODE_EXCLUSIVE);
+        AAudioStreamBuilder_setSharingMode(builder, AAUDIO_SHARING_MODE_SHARED); //for AAUDIO_SHARING_MODE_EXCLUSIVE you must know what to do
         aaudio_result_t result = AAudioStreamBuilder_openStream(builder, &aaudioData->stream);
-
-        if (result != AAUDIO_OK) {
-            // Fallback to Shared
-            AAudioStreamBuilder_setSharingMode(builder, AAUDIO_SHARING_MODE_SHARED);
-            result = AAudioStreamBuilder_openStream(builder, &aaudioData->stream);
-        }
 
         if (result != AAUDIO_OK) {
             delete aaudioData;
