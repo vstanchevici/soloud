@@ -10,7 +10,7 @@ struct AAudioStaticData {
 
 namespace SoLoud
 {
-    result aaudio_init(Soloud *aSoloud, unsigned int aFlags, unsigned int aSamplerate, unsigned int aBuffer)
+    result aaudio_init(Soloud *aSoloud, unsigned int aFlags, unsigned int aSamplerate, unsigned int aBuffer,  unsigned int aChannels)
 	{
 		return NOT_IMPLEMENTED;
 	}
@@ -91,7 +91,9 @@ namespace SoLoud {
         aSoloud->mBackendString = "AAudio";
 
         // Inform SoLoud about the final hardware settings
-        aSoloud->postinit_internal(aSamplerate, AAudioStream_getFramesPerBurst(aaudioData->stream), aFlags, aChannels);
+        int32_t framesPerBurst = AAudioStream_getFramesPerBurst(aaudioData->stream);
+        unsigned int bufferSize = (aBuffer == 0) ? framesPerBurst : aBuffer;
+        aSoloud->postinit_internal(aSamplerate, bufferSize, aFlags, aChannels);
 
         AAudioStreamBuilder_delete(builder);
 
