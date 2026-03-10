@@ -216,6 +216,20 @@ if (SOLOUD_BACKEND_OPENSLES)
 	)
 endif()
 
+if (SOLOUD_BACKEND_AAUDIO)
+	add_definitions (-DWITH_AAUDIO)
+
+	set (BACKENDS_SOURCES
+			${BACKENDS_SOURCES}
+			${BACKENDS_PATH}/aaudio/soloud_aaudio.cpp
+	)
+
+#	find_library (OPENSLES_LIBRARY OpenSLES)
+#	set (LINK_LIBRARIES
+#			${LINK_LIBRARIES}
+#			${OPENSLES_LIBRARY}
+#	)
+endif()
 
 if (SOLOUD_BACKEND_XAUDIO2)
 	add_definitions (-DWITH_XAUDIO2)

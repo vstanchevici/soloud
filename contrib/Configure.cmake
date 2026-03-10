@@ -29,6 +29,9 @@ print_option_status (SOLOUD_BACKEND_COREAUDIO "CoreAudio backend")
 option (SOLOUD_BACKEND_OPENSLES "Set to ON for building OpenSLES backend" OFF)
 print_option_status (SOLOUD_BACKEND_OPENSLES "OpenSLES backend")
 
+option (SOLOUD_BACKEND_AAUDIO "Set to ON for building AAudio backend" OFF)
+print_option_status (SOLOUD_BACKEND_AAUDIO "AAudio backend")
+
 option (SOLOUD_BACKEND_XAUDIO2 "Set to ON for building XAudio2 backend" OFF)
 print_option_status (SOLOUD_BACKEND_XAUDIO2 "XAudio2 backend")
 
